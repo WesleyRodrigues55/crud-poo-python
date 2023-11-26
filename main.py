@@ -101,31 +101,7 @@ while count > 0:
         movimentos.tipo_operacao = input("Digite o tipo de operação [depósito] ou [saque]: ")
         movimentos.valor_movimento = input(f"Digite o valor do {movimentos.tipo_operacao} R$")
         movimentos.setDados()
-    
-    # elif escolha == "14":
-    #     movimentos.codigo_agencia = input("Digite o código da agência: ")
-    #     movimentos.tipo_operacao = input("tipo operacao [depósito] ou [saque]: ")
-    #     novo_saldo = input("saldo: ")
-    #     movimentos.attDadosTipoConta(movimentos.codigo_agencia, movimentos.tipo_operacao, novo_saldo)
-    
-    # elif escolha == "15":
-    #     movimentos.codigo_agencia = input("Digite o código da agência: ")
-    #     movimentos.getSaldoTipoConta(movimentos.codigo_agencia)
 
-    # elif escolha == "14":
-    #     tipo_de_contas.codigo_agencia = input("Digite o código do tipo de conta a ser Editado: ")
-    #     tipo_de_contas.tipo_de_conta = input("Digite o tipo de conta a ser Editado: ")
-    #     tipo_de_contas.saldo = input("Digite o saldo a ser Editado: ")
-    #     tipo_de_contas.attDados(tipo_de_contas.codigo_agencia, tipo_de_contas.tipo_de_conta, tipo_de_contas.saldo)
-
-    # elif escolha == "15":
-    #     tipo_de_contas.codigo_agencia = input("Digite o código do tipo de conta a ser pesquisado: ")
-    #     tipo_de_contas.getDados(tipo_de_contas.codigo_agencia)
-
-    # elif escolha == "16":
-    #     tipo_de_contas.codigo_agencia = input("Digite o código do tipo de conta a ser removido: ")
-    #     tipo_de_contas.removeDados(tipo_de_contas.codigo_agencia)
-
-    elif escolha == "17":
+    elif escolha == "14":
         print("Saindo do sistema. Obrigado!")
         count = 0
