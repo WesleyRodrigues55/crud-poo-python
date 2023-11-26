@@ -1,3 +1,0 @@
-Nome cliente: Wesley, Email cliente: wesley@ e Telefone cliente: 123
-Nome cliente: joão, Email cliente: joão@gmail.com e Telefone cliente: 111
-Nome cliente: lucas, Email cliente: lucas e Telefone cliente: 123

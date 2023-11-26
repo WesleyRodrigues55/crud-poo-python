@@ -28,7 +28,7 @@ class Agencias:
             for linha in linhas:
                 if nome in linha:
                     # Atualize a linha com as novas informações
-                    nova_linha = f"Nome Agência: {novo_nome}\n"
+                    nova_linha = f"Nome Agência: {novo_nome},\n"
                     arquivo.write(nova_linha)
                     resultados.append(linha)
                 else:
@@ -68,7 +68,7 @@ class Agencias:
     def removeDados(self, nome):
         with open("agencias.txt", "r") as arquivo:
             linhas = arquivo.readlines()
-
+            
         agencia_encontrado = False
         linhas_restantes = []
 
