@@ -1,0 +1,4 @@
+Código do movimento: 0005, Código Agência: 0001, Tipo operação: depósito, Valor movimento: 13 
+Código do movimento: 0001, Código Agência: 0001, Tipo operação: depósito, Valor movimento: 500 
+Código do movimento: 0002, Código Agência: 0001, Tipo operação: depósito, Valor movimento: 200 
+Código do movimento: 0003, Código Agência: 0001, Tipo operação: saque, Valor movimento: 300 

@@ -94,7 +94,7 @@ while count > 0:
         tipo_de_contas.codigo_agencia = input("Digite o código do tipo de conta a ser removido: ")
         tipo_de_contas.removeDados(tipo_de_contas.codigo_agencia)
 
-    # CLASSE OVIMENTO
+    # CLASSE MOVIMENTO
     elif escolha == "13":
         movimentos.codigo_movimento = input("Digite o código do movimento a ser cadastrado: ")
         movimentos.codigo_agencia = input("Digite o código da agência: ")
@@ -102,15 +102,15 @@ while count > 0:
         movimentos.valor_movimento = input(f"Digite o valor do {movimentos.tipo_operacao} R$")
         movimentos.setDados()
     
-    elif escolha == "14":
-        movimentos.codigo_agencia = input("Digite o código da agência: ")
-        movimentos.tipo_operacao = input("tipo operacao: ")
-        novo_saldo = input("saldo: ")
-        movimentos.attSaldoEmTipoDeContas(movimentos.codigo_agencia, movimentos.tipo_operacao, novo_saldo)
+    # elif escolha == "14":
+    #     movimentos.codigo_agencia = input("Digite o código da agência: ")
+    #     movimentos.tipo_operacao = input("tipo operacao [depósito] ou [saque]: ")
+    #     novo_saldo = input("saldo: ")
+    #     movimentos.attDadosTipoConta(movimentos.codigo_agencia, movimentos.tipo_operacao, novo_saldo)
     
-    elif escolha == "15":
-        movimentos.codigo_agencia = input("Digite o código da agência: ")
-        movimentos.getSaldoTipoConta(movimentos.codigo_agencia)
+    # elif escolha == "15":
+    #     movimentos.codigo_agencia = input("Digite o código da agência: ")
+    #     movimentos.getSaldoTipoConta(movimentos.codigo_agencia)
 
     # elif escolha == "14":
     #     tipo_de_contas.codigo_agencia = input("Digite o código do tipo de conta a ser Editado: ")

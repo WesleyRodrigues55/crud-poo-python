@@ -31,15 +31,7 @@ class Movimentos:
             "\n")
             arquivo.close()
 
-            
-
-            if self.tipo_operacao == "depósito":
-                #soma no tipo conta o saldo
-                attDadosTipoConta(self.codigo_agencia, novo_saldo)
-                return
-            elif self.tipo_operacao == "saque":
-                #subtrái no tipo de conta saldo
-                return
+            self.attDadosTipoConta(self.codigo_agencia, self.tipo_operacao, self.valor_movimento)
 
             print("=======================================\n")
             print("Movimento cadastrado!!! \n")
@@ -56,58 +48,62 @@ class Movimentos:
         with open("tipo-de-conta.txt", "r") as arquivo:
             linhas = arquivo.readlines()
             resultados = []
+            armazena_saldo = None
+
             for linha in linhas:
                 if codigo_agencia in linha:
                     resultados.append(linha)
 
-        if resultados:
-            # print("Resultados encontrados para a Código da Agência: ", codigo_agencia)
-            armazena_saldo = ""
-            for resultado in resultados:
-                if resultado.strip().startswith(f"Código Agência: {codigo_agencia},"):
-                    partes = linha.split(", ")
-                    for j, parte in enumerate(partes):
+            if resultados:
+                for resultado in resultados:
+                    if resultado.strip().startswith(f"Código Agência: {codigo_agencia},"):
+                        partes = resultado.split(", ")  # Alterado aqui para usar a variável resultado
+                        for parte in partes:
                             if "Saldo" in parte:
-                                print(parte)
-                    
-        else:
-            print("=======================================\n")
-            print("Nenhum resultado encontrado para o Código da Agência: ", codigo_agencia)
-            print("=======================================\n")
+                                print(f"Esse é o saldo atual: {parte.split('Saldo: ')[1].strip()}")
+                                armazena_saldo = parte.split("Saldo: ")[1].strip()
+
+        return armazena_saldo
+
+
     
     # alteração
-    def attDadosTipoConta(self, codigo_agencia, novo_saldo):
+    def attDadosTipoConta(self, codigo_agencia, tipo_operacao, novo_saldo):
+        saldo_atual = self.getSaldoTipoConta(codigo_agencia)
+
         with open("tipo-de-conta.txt", "r") as arquivo:
             linhas = arquivo.readlines()
 
         with open("tipo-de-conta.txt", "w") as arquivo:
             encontrou_resultado = False
-
             for linha in linhas:
-                if f"Código Agência: {codigo_agencia}" in linha:
+                if f"Código Agência: {codigo_agencia}," in linha:
                     if not encontrou_resultado:
                         encontrou_resultado = True
-                        # Divide a linha em partes com base nas vírgulas
                         partes = linha.split(", ")
 
-                        # Itera sobre as partes para encontrar e substituir as informações
                         for j, parte in enumerate(partes):
                             if "Saldo" in parte:
-                                partes[j] = f"Saldo: {novo_saldo}"
+                                saldo_anterior = float(saldo_atual)
+                                novo_saldo = float(novo_saldo)
 
-                        # Junta as partes modificadas de volta em uma linha
+                                if tipo_operacao == "depósito":
+                                    novo_saldo = saldo_anterior + novo_saldo
+                                elif tipo_operacao == "saque":
+                                    novo_saldo = saldo_anterior - novo_saldo
+
+                                partes[j] = f"Saldo: {novo_saldo:.2f}"
+
                         nova_linha = ", ".join(partes) + "\n"
                         arquivo.write(nova_linha)
-                        # print("Alteração feita para o tipo de conta: ", codigo_agencia)
+                        print("Alteração feita para o tipo de conta: ", codigo_agencia)
                     else:
-                        # Se já encontrou uma correspondência, apenas escreva a linha original
                         arquivo.write(linha)
                 else:
-                    # Se a linha não contiver a correspondência, apenas escreva a linha original
                     arquivo.write(linha)
 
-            # if not encontrou_resultado:
-            #     print("=======================================\n")
-            #     print("Nenhum resultado encontrado para o tipo de conta: ", codigo_agencia)
-            #     print("A alteração não foi feita!!! \n")
-            #     print("=======================================\n")
+            if not encontrou_resultado:
+                print("=======================================\n")
+                print("Nenhum resultado encontrado para o tipo de conta: ", codigo_agencia)
+                print("A alteração não foi feita!!! \n")
+                print("=======================================\n")
