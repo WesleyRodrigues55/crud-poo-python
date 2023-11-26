@@ -14,7 +14,9 @@ class Agencias:
         arquivo = open("agencias.txt", "a")
         arquivo.write(f"Nome Agência: {self.nome},\n")
         arquivo.close()
+        print("=======================================\n")
         print("Agência cadastrado!!! \n")
+        print("=======================================\n")
         
                
     # alteração - OK
@@ -38,8 +40,10 @@ class Agencias:
                     print(resultado)
                     print("Alteração feita!!! \n")
             else:
+                print("=======================================\n")
                 print("Nenhum resultado encontrado para a agência: ", nome)
                 print("A alteração não foi feita!!! \n")
+                print("=======================================\n")
 
     # consulta - OK
     def getDados(self, nome):
@@ -55,7 +59,9 @@ class Agencias:
             for resultado in resultados:
                 print(resultado)
         else:
+            print("=======================================\n")
             print("Nenhum resultado encontrado para o Agência", nome)
+            print("=======================================\n")
 
 
     # remoção
@@ -75,6 +81,10 @@ class Agencias:
         if agencia_encontrado:
             with open("agencias.txt", "w") as arquivo:
                 arquivo.writelines(linhas_restantes)
+            print("=======================================\n")
             print(f"Agência: {nome} removido com sucesso.")
+            print("=======================================\n")
         else:
+            print("=======================================\n")
             print(f"Agência: {nome} não encontrado.")
+            print("=======================================\n")

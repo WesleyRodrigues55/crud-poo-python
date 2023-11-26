@@ -18,7 +18,9 @@ class Clientes:
         arquivo = open("clientes.txt", "a")
         arquivo.write(f"Nome cliente: {self.nome}, Email cliente: {self.email} e Telefone cliente: {self.telefone}\n")
         arquivo.close()
+        print("=======================================\n")
         print("Cliente cadastrado!!! \n")
+        print("=======================================\n")
         
                
     # alteração - OK
@@ -42,8 +44,10 @@ class Clientes:
                     print(resultado)
                     print("Alteração feita!!! \n")
             else:
+                print("=======================================\n")
                 print("Nenhum resultado encontrado para o cliente: ", nome)
                 print("A alteração não foi feita!!! \n")
+                print("=======================================\n")
 
     # consulta - OK
     def getDados(self, nome):
@@ -59,7 +63,9 @@ class Clientes:
             for resultado in resultados:
                 print(resultado)
         else:
+            print("=======================================\n")
             print("Nenhum resultado encontrado para o cliente", nome)
+            print("=======================================\n")
 
 
     # remoção
@@ -79,9 +85,13 @@ class Clientes:
         if cliente_encontrado:
             with open("clientes.txt", "w") as arquivo:
                 arquivo.writelines(linhas_restantes)
+            print("=======================================\n")
             print(f"Cliente {nome} removido com sucesso.")
+            print("=======================================\n")
         else:
+            print("=======================================\n")
             print(f"Cliente {nome} não encontrado.")
+            print("=======================================\n")
 
 
 
